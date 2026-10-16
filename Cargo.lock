@@ -3,5 +3,5 @@
 version = 4
 
 [[package]]
-name = "exercise_starfleet_mapping"
+name = "starfleet_mapping"
 version = "0.1.0"
