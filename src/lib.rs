@@ -37,3 +37,27 @@ impl SectorDatabase {
         total
     }
 }
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    #[test]
+    fn test_resource_mapping() {
+        let mut db = SectorDatabase::new();
+        let sector = Sector("Beta Quadrant".to_string());
+
+        let mut resources = HashMap::new();
+        resources.insert("Latinum".to_string(), 500);
+
+        let system = StarSystem {
+            name: "Ferenginar".to_string(),
+            resources,
+        };
+
+        db.register_system(sector, system);
+
+        assert_eq!(db.find_resource_total("Latinum"), 500);
+        assert_eq!(db.find_resource_total("Unknown"), 0);
+    }
+}
