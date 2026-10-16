@@ -1,30 +1,38 @@
 use std::collections::HashMap;
 
+/// Represents a galactic sector in the Starfleet database.
 #[derive(Debug, Clone, PartialEq, Eq, Hash)]
 pub struct Sector(pub String);
 
+/// Represents a star system containing various resources.
 #[derive(Debug, Clone)]
 pub struct StarSystem {
+    /// The name of the star system.
     pub name: String,
+    /// A mapping of resource names to their respective quantities.
     pub resources: HashMap<String, u32>,
 }
 
+/// A database mapping sectors to the star systems they contain.
 #[derive(Debug, Default)]
 pub struct SectorDatabase {
     systems: HashMap<Sector, Vec<StarSystem>>,
 }
 
 impl SectorDatabase {
+    /// Creates a new, empty sector database.
     pub fn new() -> Self {
         Self {
             systems: HashMap::new(),
         }
     }
 
+    /// Registers a new star system within a specific sector.
     pub fn register_system(&mut self, sector: Sector, system: StarSystem) {
         self.systems.entry(sector).or_default().push(system);
     }
 
+    /// Calculates the total amount of a specific resource across all registered systems.
     pub fn find_resource_total(&self, resource_name: &str) -> u32 {
         let mut total = 0;
         for systems in self.systems.values() {
