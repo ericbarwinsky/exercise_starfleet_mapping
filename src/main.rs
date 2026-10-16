@@ -1,5 +1,5 @@
 use std::collections::HashMap;
-use starfleet_mapping::{Sector, StarSystem, SectorDatabase};
+use exercise_starfleet_mapping::{Sector, StarSystem, SectorDatabase};
 
 fn main() {
     let mut starfleet_db = SectorDatabase::new();
