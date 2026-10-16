@@ -1,5 +1,5 @@
 [package]
-name = "starfleet_mapping"
+name = "exercise_starfleet_mapping"
 version = "0.1.0"
 edition = "2021"
 
